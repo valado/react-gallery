@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { GalleryItem } from "./model/GalleryItem";
 import { FeatureImage } from "./FeatureImage";
-import styles from "dekstop-styles.module.css";
+import styles from "./dekstop-styles.module.css";
 import { concatClasses } from "../utils";
 import { ArrowRight } from "./ArrowRight";
 import { GalleryProps } from "./model/GalleryProps";

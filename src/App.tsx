@@ -1,5 +1,19 @@
 import { FC } from "react";
-import { InteractiveGradient } from "../lib/InteractiveGradient";
+import { Gallery } from "../lib/Gallery";
+import { GalleryProps } from "../lib/Gallery/model/GalleryProps";
+
+const features: GalleryProps["features"] = [
+  {
+    title: "Feature 1",
+    description: "Lorem Ipsum description of a feature",
+    src: "",
+  },
+  {
+    title: "Feature 2",
+    description: "Lorem Ipsum description of a feature",
+    src: "",
+  },
+];
 
 const App: FC = () => {
   return (
@@ -11,9 +25,7 @@ const App: FC = () => {
         transform: "translate(-50%, -50%)",
       }}
     >
-      <InteractiveGradient size={"500px"} morph float>
-        <span>test</span>
-      </InteractiveGradient>
+      <Gallery features={features} />
     </div>
   );
 };
