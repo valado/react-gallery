@@ -1,6 +1,10 @@
 import { FC, useEffect, useRef, useState } from "react";
 
-import { concatClasses, SCROLL_DIRECTION, useScroll } from "../utils";
+import {
+  concatClassNames,
+  SCROLL_DIRECTION,
+  useScroll,
+} from "react-basic-utils";
 import { ArrowRight } from "./ArrowRight";
 import { FeatureImage } from "./FeatureImage";
 import styles from "./mobile-styles.module.css";
@@ -42,13 +46,13 @@ export const MobileView: FC<Required<GalleryProps>> = ({
           return (
             <div
               key={idx}
-              className={concatClasses(styles.itemMobile, [
+              className={concatClassNames(styles.itemMobile, [
                 styles.itemSelected,
                 selected,
               ])}
             >
               <div
-                className={concatClasses(styles.title, [
+                className={concatClassNames(styles.title, [
                   styles.titleSelected,
                   selected,
                 ])}

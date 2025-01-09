@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from "react";
+import { concatClassNames } from "react-basic-utils";
 import { GalleryItem } from "./model/GalleryItem";
 import { FeatureImage } from "./FeatureImage";
 import styles from "./dekstop-styles.module.css";
-import { concatClasses } from "../utils";
 import { ArrowRight } from "./ArrowRight";
 import { GalleryProps } from "./model/GalleryProps";
 
@@ -61,7 +61,7 @@ export const DesktopView: FC<Required<GalleryProps>> = ({
           return (
             <div
               key={idx}
-              className={concatClasses(styles.itemDesktop, [
+              className={concatClassNames(styles.itemDesktop, [
                 styles.itemSelected,
                 selected,
               ])}
@@ -71,7 +71,7 @@ export const DesktopView: FC<Required<GalleryProps>> = ({
               }}
             >
               <div
-                className={concatClasses(styles.title, [
+                className={concatClassNames(styles.title, [
                   styles.titleSelected,
                   selected,
                 ])}

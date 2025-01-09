@@ -1,8 +1,8 @@
 import { CSSProperties, FC, useMemo } from "react";
-import { useIsMobile } from "../utils/media";
 import { DEFAULT_PROPS, GalleryProps } from "./model/GalleryProps";
 import { DesktopView } from "./DesktopView";
 import { MobileView } from "./MobileView";
+import { useIsMobile } from "react-basic-utils";
 
 export const Gallery: FC<GalleryProps> = (props) => {
   const isMobileView = useIsMobile();
