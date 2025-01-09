@@ -9,20 +9,19 @@ import { GalleryProps } from "./model/GalleryProps";
 export const DesktopView: FC<Required<GalleryProps>> = ({
   features,
   accentColor,
-  defaultColor,
   showMoreButton,
-  onClickMore,
+  moreButtonHref,
   secondsPerFeature,
 }) => {
-  const [featureIdx, setFeatureIdx] = useState(0);
-  const [featureTimeout, setFeatureTimeout] = useState<
-    NodeJS.Timeout | undefined
-  >(undefined);
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const [itemTimeout, setItemTimeout] = useState<NodeJS.Timeout | undefined>(
+    undefined
+  );
   const [disabledAutorotation, setDisabledAutorotation] = useState(false);
   const stopAutorotation = () => {
-    if (featureTimeout) {
-      clearTimeout(featureTimeout);
-      setFeatureTimeout(undefined);
+    if (itemTimeout) {
+      clearTimeout(itemTimeout);
+      setItemTimeout(undefined);
       setDisabledAutorotation(true);
     }
   };
@@ -40,24 +39,25 @@ export const DesktopView: FC<Required<GalleryProps>> = ({
       return;
     }
     const timeout = setTimeout(() => {
-      setFeatureIdx(getNextFeatureIdx(featureIdx, features));
+      setCurrentIdx(getNextFeatureIdx(currentIdx, features));
     }, secondsPerFeature * 1000);
-    setFeatureTimeout(timeout);
+    setItemTimeout(timeout);
     return () => {
       return clearTimeout(timeout);
     };
-  }, [featureIdx, disabledAutorotation, features, secondsPerFeature]);
+  }, [currentIdx, disabledAutorotation, features, secondsPerFeature]);
 
   return (
     <div className={styles.containerDesktop}>
-      <div className={concatClasses(styles.columnImage, styles.paddingRight)}>
-        <FeatureImage src={features[featureIdx].src} />
+      <div className={styles.columnImage}>
+        <FeatureImage
+          src={features[currentIdx].src}
+          alt={features[currentIdx].alt}
+        />
       </div>
-      <div
-        className={concatClasses(styles.columnDescription, styles.paddingLeft)}
-      >
+      <div className={styles.columnDescription}>
         {features.map((feature, idx) => {
-          const selected = idx === featureIdx;
+          const selected = idx === currentIdx;
           return (
             <div
               key={idx}
@@ -66,13 +66,15 @@ export const DesktopView: FC<Required<GalleryProps>> = ({
                 selected,
               ])}
               onClick={() => {
-                setFeatureIdx(idx);
+                setCurrentIdx(idx);
                 stopAutorotation();
               }}
             >
               <div
-                className={styles.title}
-                style={{ color: selected ? accentColor : defaultColor }}
+                className={concatClasses(styles.title, [
+                  styles.titleSelected,
+                  selected,
+                ])}
               >
                 {feature.title}
               </div>
@@ -80,19 +82,14 @@ export const DesktopView: FC<Required<GalleryProps>> = ({
                 <>
                   <div className={styles.text}>{feature.description}</div>
                   <div
-                    className={`${styles.loader}, ${
-                      !featureTimeout ? styles.full : ""
-                    }`}
-                    style={{
-                      backgroundColor: accentColor,
-                      ...(featureTimeout
+                    className={styles.loader}
+                    style={
+                      itemTimeout
                         ? {
-                            backgroundColor: accentColor,
-                            animation: `progressBar ${secondsPerFeature}s`,
-                            animationFillMode: "both",
+                            animationDuration: `${secondsPerFeature}s`,
                           }
-                        : {}),
-                    }}
+                        : { width: "100%" }
+                    }
                   />
                 </>
               )}
@@ -101,9 +98,11 @@ export const DesktopView: FC<Required<GalleryProps>> = ({
         })}
         {showMoreButton && (
           <div className={styles.itemDesktop}>
-            <div className={styles.title} onClick={onClickMore}>
-              <ArrowRight /> More
-            </div>
+            <a href={moreButtonHref}>
+              <div className={styles.title}>
+                More <ArrowRight color={accentColor} />
+              </div>
+            </a>
           </div>
         )}
       </div>

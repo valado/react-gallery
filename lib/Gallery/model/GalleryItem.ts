@@ -3,5 +3,5 @@ export interface GalleryItem {
   description: string;
   src: string;
   alt?: string;
-  onClick?: () => void;
+  href?: string;
 }

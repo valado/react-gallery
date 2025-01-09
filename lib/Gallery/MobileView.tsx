@@ -10,9 +10,8 @@ import { idxAllowed } from "../utils";
 export const MobileView: FC<Required<GalleryProps>> = ({
   features,
   accentColor,
-  defaultColor,
   showMoreButton,
-  onClickMore,
+  moreButtonHref,
 }) => {
   const [featureIdx, setFeatureIdx] = useState(0);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -49,10 +48,10 @@ export const MobileView: FC<Required<GalleryProps>> = ({
               ])}
             >
               <div
-                className={styles.title}
-                style={{
-                  color: selected ? accentColor : defaultColor,
-                }}
+                className={concatClasses(styles.title, [
+                  styles.titleSelected,
+                  selected,
+                ])}
               >
                 {feature.title}
               </div>
@@ -90,9 +89,11 @@ export const MobileView: FC<Required<GalleryProps>> = ({
         })}
         {showMoreButton && (
           <div className={styles.itemMobile}>
-            <div className={styles.title} onClick={onClickMore}>
-              More <ArrowRight />
-            </div>
+            <a href={moreButtonHref}>
+              <div className={styles.title}>
+                More <ArrowRight color={accentColor} />
+              </div>
+            </a>
           </div>
         )}
       </div>

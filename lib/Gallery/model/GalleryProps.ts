@@ -1,18 +1,18 @@
 import { GalleryItem } from "./GalleryItem";
 
-export interface GalleryProps {
+export type GalleryProps = {
   features: GalleryItem[];
   defaultColor?: string;
   accentColor?: string;
   secondsPerFeature?: number;
   showMoreButton?: boolean;
-  onClickMore?: () => void;
-}
+  moreButtonHref?: string;
+};
 
 export const DEFAULT_PROPS = {
-  defaultColor: "grey",
-  accentColor: "purple",
+  defaultColor: "#27333e",
+  accentColor: "#6a52fc",
   secondsPerFeature: 15,
   showMoreButton: false,
-  onClickMore: () => {},
+  moreButtonHref: "",
 };
