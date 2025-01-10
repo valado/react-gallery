@@ -1,5 +1,5 @@
 {
-  "name": "react-gallery",
+  "name": "react-feature-gallery",
   "private": false,
   "repository": "https://github.com/valado/react-gallery",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "features"
   ],
   "type": "module",
-  "main": "dist/react-gallery.js",
+  "main": "dist/react-feature-gallery.js",
   "types": "dist/main.d.ts",
   "files": [
     "dist"
