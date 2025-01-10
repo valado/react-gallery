@@ -10,15 +10,14 @@ export const FeatureImage: FC<FeatureImageProps> = ({
   alt = "feature image",
 }) => {
   return (
-    <div
+    <img
+      src={src}
+      alt={alt}
       style={{
         maxWidth: "100%",
         boxShadow: "0 1px 0 #aeb5bb, 0 10px 20px -5px rgba(0,0,0,0.5)",
         borderRadius: "5px",
-        overflow: "hidden",
       }}
-    >
-      <img src={src} alt={alt} style={{ maxWidth: "100%" }} />
-    </div>
+    />
   );
 };
