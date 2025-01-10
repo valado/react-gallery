@@ -4,6 +4,11 @@
   "repository": "https://github.com/valado/react-gallery",
   "license": "MIT",
   "version": "1.0.0",
+  "keywords": [
+    "react",
+    "gallery",
+    "features"
+  ],
   "type": "module",
   "main": "dist/react-gallery.js",
   "types": "dist/main.d.ts",
