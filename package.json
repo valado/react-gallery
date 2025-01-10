@@ -1,6 +1,7 @@
 {
   "name": "react-gallery",
   "private": true,
+  "repository": "https://github.com/valado/react-gallery",
   "version": "0.0.0",
   "type": "module",
   "main": "dist/react-gallery.js",
