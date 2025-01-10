@@ -1,6 +1,6 @@
 {
   "name": "react-gallery",
-  "private": true,
+  "private": false,
   "repository": "https://github.com/valado/react-gallery",
   "license": "MIT",
   "version": "1.0.0",
