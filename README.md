@@ -1,8 +1,13 @@
 # react-gallery
 
-Modern React gallery
+Modern React Feature Gallery
+
+## Desktop
 
 <img src="https://raw.githubusercontent.com/valado/react-gallery/main/public/demo-desktop.png" width="400">
+
+## Mobile
+
 <img src="https://raw.githubusercontent.com/valado/react-gallery/main/public/demo-mobile.png" width="400">
 
 ## Demo
