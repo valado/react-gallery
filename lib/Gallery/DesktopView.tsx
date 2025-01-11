@@ -54,6 +54,7 @@ export const DesktopView: FC<Required<GalleryProps>> = ({
         <FeatureImage
           src={features[currentIdx].src}
           alt={features[currentIdx].alt}
+          href={features[currentIdx].href}
         />
       </div>
       <div className={styles.columnDescription}>

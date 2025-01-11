@@ -19,7 +19,7 @@ export const MobileView: FC<Required<GalleryProps>> = ({
   moreButtonLabel,
   swipeLabel,
 }) => {
-  const [featureIdx, setFeatureIdx] = useState(0);
+  const [currentIdx, setCurrentIdx] = useState(0);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [refListCurrentNode, setRefListCurrentNode] = useState<any>(undefined);
 
@@ -35,8 +35,8 @@ export const MobileView: FC<Required<GalleryProps>> = ({
       listRef.current.scrollWidth - listRef.current.clientWidth;
     const scrollPerItem = scrollWidth / features.length;
     const idx = Math.floor(scrollProgress / scrollPerItem);
-    if (idx !== featureIdx && idxAllowed(idx, features)) {
-      setFeatureIdx(idx);
+    if (idx !== currentIdx && idxAllowed(idx, features)) {
+      setCurrentIdx(idx);
     }
   }
 
@@ -44,7 +44,7 @@ export const MobileView: FC<Required<GalleryProps>> = ({
     <div className={styles.containerMobile}>
       <div ref={listRef} className={styles.sidepanelMobile}>
         {features.map((feature, idx) => {
-          const selected = idx === featureIdx;
+          const selected = idx === currentIdx;
           return (
             <div
               key={idx}
@@ -104,7 +104,11 @@ export const MobileView: FC<Required<GalleryProps>> = ({
         )}
       </div>
       <div className={styles.pictureMobile}>
-        <FeatureImage src={features[featureIdx].src} />
+        <FeatureImage
+          src={features[currentIdx].src}
+          alt={features[currentIdx].alt}
+          href={features[currentIdx].href}
+        />
       </div>
     </div>
   );

@@ -1,15 +1,17 @@
-import { FC } from "react";
+import { FC, PropsWithChildren } from "react";
 
 interface FeatureImageProps {
   src: string;
   alt?: string;
+  href?: string;
 }
 
 export const FeatureImage: FC<FeatureImageProps> = ({
   src,
   alt = "feature image",
-}) => {
-  return (
+  href,
+}) => (
+  <OptionalLink href={href}>
     <img
       src={src}
       alt={alt}
@@ -19,5 +21,17 @@ export const FeatureImage: FC<FeatureImageProps> = ({
         borderRadius: "5px",
       }}
     />
+  </OptionalLink>
+);
+
+const OptionalLink: FC<PropsWithChildren<{ href?: string }>> = ({
+  href,
+  children,
+}) =>
+  href ? (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  ) : (
+    <>{children}</>
   );
-};
