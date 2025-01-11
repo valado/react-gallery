@@ -16,6 +16,8 @@ export const MobileView: FC<Required<GalleryProps>> = ({
   accentColor,
   showMoreButton,
   moreButtonHref,
+  moreButtonLabel,
+  swipeLabel,
 }) => {
   const [featureIdx, setFeatureIdx] = useState(0);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -85,7 +87,7 @@ export const MobileView: FC<Required<GalleryProps>> = ({
               )}
               {0 === idx && (
                 <div className={styles.scrollHint}>
-                  <span>{"swipe for more >>"}</span>
+                  <span>{swipeLabel}</span>
                 </div>
               )}
             </div>
@@ -95,7 +97,7 @@ export const MobileView: FC<Required<GalleryProps>> = ({
           <div className={styles.itemMobile}>
             <a href={moreButtonHref}>
               <div className={styles.title}>
-                More <ArrowRight color={accentColor} />
+                {moreButtonLabel} <ArrowRight color={accentColor} />
               </div>
             </a>
           </div>

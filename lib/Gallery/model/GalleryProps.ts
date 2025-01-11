@@ -7,6 +7,8 @@ export type GalleryProps = {
   secondsPerFeature?: number;
   showMoreButton?: boolean;
   moreButtonHref?: string;
+  moreButtonLabel?: string;
+  swipeLabel?: string;
 };
 
 export const DEFAULT_PROPS = {
@@ -15,4 +17,6 @@ export const DEFAULT_PROPS = {
   secondsPerFeature: 15,
   showMoreButton: false,
   moreButtonHref: "",
+  moreButtonLabel: "More",
+  swipeLabel: "swipe for more >>",
 };

@@ -12,6 +12,7 @@ export const DesktopView: FC<Required<GalleryProps>> = ({
   showMoreButton,
   moreButtonHref,
   secondsPerFeature,
+  moreButtonLabel,
 }) => {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [itemTimeout, setItemTimeout] = useState<NodeJS.Timeout | undefined>(
@@ -100,7 +101,7 @@ export const DesktopView: FC<Required<GalleryProps>> = ({
           <div className={styles.itemDesktop}>
             <a href={moreButtonHref}>
               <div className={styles.title}>
-                More <ArrowRight color={accentColor} />
+                {moreButtonLabel} <ArrowRight color={accentColor} />
               </div>
             </a>
           </div>
